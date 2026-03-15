@@ -1,0 +1,44 @@
+# Theme — auto-switches with macOS appearance
+
+#theme = dark:Srcery,light:Builtin Solarized Light
+   
+# Shell integration (auto-detects zsh)
+shell-integration = detect
+
+# Confirm before closing a session with running processes
+confirm-close-surface = true
+
+# macOS native tabs
+macos-titlebar-style = tabs
+
+# Copy on highlight (like iTerm2)
+copy-on-select = clipboard
+
+# Hide mouse while typing
+mouse-hide-while-typing = true
+
+# Warn before pasting suspicious content (like iTerm2's paste protection)
+clipboard-paste-protection = true
+
+# URLs are clickable (Cmd+click)
+link-url = true
+
+bell-features = attention
+desktop-notifications = true
+
+macos-option-as-alt = true
+
+#theme = dark:IR Black, light:Builtin Solarized Light
+#theme = dark:Catppuccin Mocha, light:Novel
+
+#Dark themes
+#theme = Catppuccin Mocha 
+#theme = IR Black
+
+
+#Light themes
+#theme = iTerm2 Tango Light
+#theme = Novel 
+#theme = Monokai Pro Light Sun 
+#theme = Novel 
+#theme = Builtin Solarized Light
