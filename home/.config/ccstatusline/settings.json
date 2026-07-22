@@ -1,0 +1,115 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "0e",
+        "type": "custom-symbol",
+        "customSymbol": "📁 ",
+        "merge": "no-padding"
+      },
+      {
+        "id": "0",
+        "type": "current-working-dir",
+        "color": "blue",
+        "rawValue": true,
+        "metadata": {
+          "abbreviateHome": "true",
+          "segments": "2"
+        }
+      },
+      {
+        "id": "0s",
+        "type": "separator"
+      },
+      {
+        "id": "1e",
+        "type": "custom-symbol",
+        "customSymbol": "🤖 ",
+        "merge": "no-padding"
+      },
+      {
+        "id": "1",
+        "type": "model",
+        "color": "cyan",
+        "rawValue": true
+      },
+      {
+        "id": "2",
+        "type": "separator"
+      },
+      {
+        "id": "4",
+        "type": "context-bar"
+      },
+      {
+        "id": "5",
+        "type": "separator"
+      },
+      {
+        "id": "6",
+        "type": "git-branch",
+        "color": "magenta",
+        "character": "🌿",
+        "metadata": {
+          "hideNoGit": "true"
+        }
+      },
+      {
+        "id": "7",
+        "type": "separator"
+      },
+      {
+        "id": "8",
+        "type": "git-changes",
+        "color": "yellow",
+        "metadata": {
+          "hideNoGit": "true"
+        }
+      },
+      {
+        "id": "9",
+        "type": "flex-separator"
+      },
+      {
+        "id": "10e",
+        "type": "custom-symbol",
+        "customSymbol": "💰 ",
+        "merge": "no-padding"
+      },
+      {
+        "id": "10",
+        "type": "session-cost",
+        "color": "green",
+        "rawValue": true
+      }
+    ],
+    [],
+    []
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 3,
+  "defaultPaddingSide": "both",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  },
+  "installation": {
+    "method": "pinned",
+    "installedVersion": "2.2.25"
+  }
+}

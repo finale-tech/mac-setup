@@ -146,3 +146,27 @@ brew install --cask karabiner-elements
 2. Grant accessibility permissions when prompted
 
 3. Import the layout config from [karabiner-canary-final.json](karabiner-canary-final.json)
+
+---
+
+## 7. Claude Code Status Line (ccstatusline)
+
+Custom status line: `📁 cwd | 🤖 model | context bar | 🌿 branch | (+ins,-del) … 💰 cost`
+
+1. Install (pinned global)
+```bash
+npm install -g ccstatusline
+```
+
+2. Copy the widget config
+```bash
+mkdir -p ~/.config/ccstatusline
+cp home/.config/ccstatusline/settings.json ~/.config/ccstatusline/settings.json
+```
+
+3. `home/.claude/settings.json` (copied in the Claude Code step) already points `statusLine` at the `ccstatusline` binary — no further wiring needed.
+
+Notes:
+- Config uses truecolor (`colorLevel: 3`) — fine in Ghostty.
+- Git widgets have `hideNoGit` so they disappear outside repos.
+- To tweak interactively: run `ccstatusline` with no stdin for the TUI configurator.

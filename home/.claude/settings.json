@@ -121,8 +121,9 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/statusline.py",
-    "padding": 2
+    "command": "ccstatusline",
+    "padding": 0,
+    "refreshInterval": 10
   },
   "outputStyle": "pedagogical",
   "effortLevel": "high",
