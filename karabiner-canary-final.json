@@ -1,0 +1,411 @@
+{
+    "description": "Canary (matrix) in Karabiner — macOS on U.S. QWERTY — Extend layer: IJKL arrows, symbol grid (openers E/D/C, closers R/F/V, ! & = _ * | and . on M), Space=Backspace, Enter=line-end-;, Extend+Cmd physical-position rescues",
+    "manipulators": [
+        {
+            "description": "Caps Lock → Extend layer",
+            "from": { "key_code": "caps_lock", "modifiers": { "optional": ["any"] } },
+            "to": [{ "set_variable": { "name": "extend", "value": 1 } }],
+            "to_after_key_up": [{ "set_variable": { "name": "extend", "value": 0 } }],
+            "to_if_alone": [{ "key_code": "caps_lock" }],
+            "type": "basic"
+        },
+
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+Z → Undo at physical position (rescue — mandatory-modifier rules listed before catch-alls)",
+            "from": { "key_code": "z", "modifiers": { "mandatory": ["left_command"], "optional": [] } },
+            "to": [{ "key_code": "z", "modifiers": ["left_command"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+⇧+Z → Redo at physical position (rescue)",
+            "from": { "key_code": "z", "modifiers": { "mandatory": ["left_command", "left_shift"], "optional": [] } },
+            "to": [{ "key_code": "z", "modifiers": ["left_command", "left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+X → Cut at physical position (rescue)",
+            "from": { "key_code": "x", "modifiers": { "mandatory": ["left_command"], "optional": [] } },
+            "to": [{ "key_code": "x", "modifiers": ["left_command"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+C → Copy at physical position (rescue)",
+            "from": { "key_code": "c", "modifiers": { "mandatory": ["left_command"], "optional": [] } },
+            "to": [{ "key_code": "c", "modifiers": ["left_command"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+V → Paste at physical position (rescue)",
+            "from": { "key_code": "v", "modifiers": { "mandatory": ["left_command"], "optional": [] } },
+            "to": [{ "key_code": "v", "modifiers": ["left_command"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+F → Find at physical position (rescue)",
+            "from": { "key_code": "f", "modifiers": { "mandatory": ["left_command"], "optional": [] } },
+            "to": [{ "key_code": "f", "modifiers": ["left_command"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+S → Save at physical position (rescue)",
+            "from": { "key_code": "s", "modifiers": { "mandatory": ["left_command"], "optional": [] } },
+            "to": [{ "key_code": "s", "modifiers": ["left_command"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+N → New Document at physical position (rescue)",
+            "from": { "key_code": "n", "modifiers": { "mandatory": ["left_command"], "optional": [] } },
+            "to": [{ "key_code": "n", "modifiers": ["left_command"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+Q → Quit at physical position (rescue)",
+            "from": { "key_code": "q", "modifiers": { "mandatory": ["left_command"], "optional": [] } },
+            "to": [{ "key_code": "q", "modifiers": ["left_command"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+⌘+T → New Tab at physical position (rescue)",
+            "from": { "key_code": "t", "modifiers": { "mandatory": ["left_command"], "optional": [] } },
+            "to": [{ "key_code": "t", "modifiers": ["left_command"] }],
+            "type": "basic"
+        },
+
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+I → Up Arrow (preserve modifiers)",
+            "from": { "key_code": "i", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "up_arrow" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+J → Left Arrow (preserve modifiers)",
+            "from": { "key_code": "j", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "left_arrow" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+K → Down Arrow (preserve modifiers)",
+            "from": { "key_code": "k", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "down_arrow" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+L → Right Arrow (preserve modifiers)",
+            "from": { "key_code": "l", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "right_arrow" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+Space → Backspace",
+            "from": { "key_code": "spacebar", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "delete_or_backspace" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+M → .  (Shift passes through → >)",
+            "from": { "key_code": "m", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "period" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+Enter → end of line ;",
+            "from": { "key_code": "return_or_enter", "modifiers": { "optional": ["any"] } },
+            "to": [
+                { "key_code": "right_arrow", "modifiers": ["left_command"] },
+                { "key_code": "semicolon" }
+            ],
+            "type": "basic"
+        },
+
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+W → !",
+            "from": { "key_code": "w", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "1", "modifiers": ["left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+E → {",
+            "from": { "key_code": "e", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "open_bracket", "modifiers": ["left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+R → }",
+            "from": { "key_code": "r", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "close_bracket", "modifiers": ["left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+T → &",
+            "from": { "key_code": "t", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "7", "modifiers": ["left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+S → _",
+            "from": { "key_code": "s", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "hyphen", "modifiers": ["left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+D → (",
+            "from": { "key_code": "d", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "9", "modifiers": ["left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+F → )",
+            "from": { "key_code": "f", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "0", "modifiers": ["left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+G → =  (hold Shift → + via passthrough)",
+            "from": { "key_code": "g", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "equal_sign" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+X → *",
+            "from": { "key_code": "x", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "8", "modifiers": ["left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+C → [",
+            "from": { "key_code": "c", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "open_bracket" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+V → ]",
+            "from": { "key_code": "v", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "close_bracket" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+B → |",
+            "from": { "key_code": "b", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "backslash", "modifiers": ["left_shift"] }],
+            "type": "basic"
+        },
+        {
+            "conditions": [{ "name": "extend", "type": "variable_if", "value": 1 }],
+            "description": "Extend+P → =  (legacy alias; remove once Extend+G is habit)",
+            "from": { "key_code": "p", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "equal_sign" }],
+            "type": "basic"
+        },
+
+        {
+            "description": "Canary: physical Q → w",
+            "from": { "key_code": "q", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "w" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical W → l",
+            "from": { "key_code": "w", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "l" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical E → y",
+            "from": { "key_code": "e", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "y" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical R → p",
+            "from": { "key_code": "r", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "p" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical T → k",
+            "from": { "key_code": "t", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "k" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical Y → z",
+            "from": { "key_code": "y", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "z" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical U → x",
+            "from": { "key_code": "u", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "x" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical I → o",
+            "from": { "key_code": "i", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "o" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical O → u",
+            "from": { "key_code": "o", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "u" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical P → ; (shift gives :)",
+            "from": { "key_code": "p", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "semicolon" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical A → c",
+            "from": { "key_code": "a", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "c" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical S → r",
+            "from": { "key_code": "s", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "r" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical D → s",
+            "from": { "key_code": "d", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "s" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical F → t",
+            "from": { "key_code": "f", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "t" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical G → b",
+            "from": { "key_code": "g", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "b" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical H → f",
+            "from": { "key_code": "h", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "f" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical J → n",
+            "from": { "key_code": "j", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "n" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical K → e",
+            "from": { "key_code": "k", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "e" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical L → i",
+            "from": { "key_code": "l", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "i" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical ; → a  (physical ' stays ')",
+            "from": { "key_code": "semicolon", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "a" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical Z → j",
+            "from": { "key_code": "z", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "j" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical X → v",
+            "from": { "key_code": "x", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "v" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical C → d",
+            "from": { "key_code": "c", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "d" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical V → g",
+            "from": { "key_code": "v", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "g" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical B → q",
+            "from": { "key_code": "b", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "q" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical N → m",
+            "from": { "key_code": "n", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "m" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical M → h",
+            "from": { "key_code": "m", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "h" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical , → / (shift gives ?)",
+            "from": { "key_code": "comma", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "slash" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical . → , (shift gives <)",
+            "from": { "key_code": "period", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "comma" }],
+            "type": "basic"
+        },
+        {
+            "description": "Canary: physical / → . (shift gives >)",
+            "from": { "key_code": "slash", "modifiers": { "optional": ["any"] } },
+            "to": [{ "key_code": "period" }],
+            "type": "basic"
+        }
+    ],
+    "title": "Canary (matrix) + Extend + Symbol Grid + Chain-dot"
+}

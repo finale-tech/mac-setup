@@ -136,7 +136,7 @@ brew install --cask tailscale
 
 ## 6. Karabiner
 
-> Reference: [Keyboard layout](karabiner_layout.svg)
+> Reference: [Keyboard layout](canary-extend-layout.svg) — Canary (matrix) on U.S. QWERTY, with Extend layer (Caps Lock): IJKL arrows, symbol grid, Space→Backspace, and Extend+⌘ physical-position rescues for Z/X/C/V
 
 1. Install
 ```bash
@@ -145,4 +145,4 @@ brew install --cask karabiner-elements
 
 2. Grant accessibility permissions when prompted
 
-3. Import the layout config from [karabiner_layout_program.txt](karabiner_layout_program.txt)
+3. Import the layout config from [karabiner-canary-final.json](karabiner-canary-final.json)
