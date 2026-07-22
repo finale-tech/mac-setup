@@ -1,0 +1,16 @@
+{
+  "name": "html2md",
+  "version": "1.0.0",
+  "description": "Local HTML to Markdown converter using Turndown (same engine as codebeautify.org)",
+  "bin": {
+    "html2md": "html2md.js"
+  },
+  "scripts": {
+    "start": "node html2md.js"
+  },
+  "dependencies": {
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "license": "MIT"
+}
