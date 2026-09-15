@@ -153,10 +153,12 @@ brew install --cask karabiner-elements
 
 Custom status line: `📁 cwd | 🤖 model | context bar | 🌿 branch | (+ins,-del) … 💰 cost`
 
-1. Install (pinned global)
+1. Install (Homebrew, via a third-party tap — not in homebrew-core)
 ```bash
-npm install -g ccstatusline
+brew tap chenrui333/tap && brew install ccstatusline
 ```
+
+   The formula depends on the unversioned `node` formula (installed if absent). The binary lands in `/opt/homebrew/bin`, so it's on `PATH` for every shell and GUI launch — no nvm dependency.
 
 2. Copy the widget config
 ```bash
@@ -164,9 +166,25 @@ mkdir -p ~/.config/ccstatusline
 cp home/.config/ccstatusline/settings.json ~/.config/ccstatusline/settings.json
 ```
 
-3. `home/.claude/settings.json` (copied in the Claude Code step) already points `statusLine` at the `ccstatusline` binary — no further wiring needed.
+3. Point Claude Code at it. `home/.claude/settings.json` in this repo already has the block; set the same in `~/.claude/settings.json`:
+```json
+"statusLine": {
+  "type": "command",
+  "command": "ccstatusline",
+  "padding": 0,
+  "refreshInterval": 10
+}
+```
+
+4. Verify without restarting Claude Code — feed it the payload shape Claude Code sends:
+```bash
+echo '{"session_id":"t","cwd":"'"$PWD"'","model":{"display_name":"Opus 5"},"version":"2.0.0","cost":{"total_cost_usd":0.01,"total_duration_ms":1000},"context_window":{"used_percentage":12}}' | ccstatusline
+```
+   Expect one rendered line. If the TUI opens instead, stdin wasn't connected.
 
 Notes:
+- Update with `brew upgrade ccstatusline`. The `installation` block in `settings.json` is stale metadata from the npm install — if the TUI offers to self-update, decline; brew owns updates.
+- Why the tap is acceptable: the package has zero runtime deps and no install scripts; the tap (a Homebrew core maintainer's) ships a checksummed prebuilt bottle and pins the version, so upgrades are explicit rather than silent-latest. Upstream is a single maintainer either way.
 - Config uses truecolor (`colorLevel: 3`) — fine in Ghostty.
 - Git widgets have `hideNoGit` so they disappear outside repos.
 - To tweak interactively: run `ccstatusline` with no stdin for the TUI configurator.
