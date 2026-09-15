@@ -20,7 +20,7 @@ For external monitors with scaling issues.
 
 1. Install displayplacer
 ```bash
-brew tap jakehilborn/jakehilborn && brew install displayplacer
+brew install displayplacer
 ```
 
 2. List displays and find your display ID
@@ -149,42 +149,33 @@ brew install --cask karabiner-elements
 
 ---
 
-## 7. Claude Code Status Line (ccstatusline)
+## 7. Claude Code Status Line
 
-Custom status line: `📁 cwd | 🤖 model | context bar | 🌿 branch | (+ins,-del) … 💰 cost`
+Custom status line: `📁 cwd | 🤖 model (effort) | context % | ↑sent ↓recv | 🌿 branch +ins/-del | 🔥 cache | 💰 cost | 5h/7d limits`
 
-1. Install (Homebrew, via a third-party tap — not in homebrew-core)
+A self-owned bash script — nothing to install, no third-party code. Needs only `jq` (ships with macOS 15+ at `/usr/bin/jq`) and `git`.
+
+1. Copy the script
 ```bash
-brew tap chenrui333/tap && brew install ccstatusline
+cp home/.claude/statusline.sh ~/.claude/statusline.sh && chmod +x ~/.claude/statusline.sh
 ```
 
-   The formula depends on the unversioned `node` formula (installed if absent). The binary lands in `/opt/homebrew/bin`, so it's on `PATH` for every shell and GUI launch — no nvm dependency.
-
-2. Copy the widget config
-```bash
-mkdir -p ~/.config/ccstatusline
-cp home/.config/ccstatusline/settings.json ~/.config/ccstatusline/settings.json
-```
-
-3. Point Claude Code at it. `home/.claude/settings.json` in this repo already has the block; set the same in `~/.claude/settings.json`:
+2. Point Claude Code at it in `~/.claude/settings.json` (`home/.claude/settings.json` has the same block):
 ```json
 "statusLine": {
   "type": "command",
-  "command": "ccstatusline",
-  "padding": 0,
-  "refreshInterval": 10
+  "command": "~/.claude/statusline.sh",
+  "padding": 0
 }
 ```
 
-4. Verify without restarting Claude Code — feed it the payload shape Claude Code sends:
+3. Verify without restarting Claude Code — pipe a sample payload:
 ```bash
-echo '{"session_id":"t","cwd":"'"$PWD"'","model":{"display_name":"Opus 5"},"version":"2.0.0","cost":{"total_cost_usd":0.01,"total_duration_ms":1000},"context_window":{"used_percentage":12}}' | ccstatusline
+echo '{"cwd":"'"$PWD"'","model":{"display_name":"Opus 5"},"effort":{"level":"high"},"context_window":{"used_percentage":42},"cost":{"total_cost_usd":1.23}}' | ~/.claude/statusline.sh
 ```
-   Expect one rendered line. If the TUI opens instead, stdin wasn't connected.
+   Expect one rendered line and exit 0. Cache, token and rate-limit segments only appear once Claude Code has made an API call, so they're absent here.
 
 Notes:
-- Update with `brew upgrade ccstatusline`. The `installation` block in `settings.json` is stale metadata from the npm install — if the TUI offers to self-update, decline; brew owns updates.
-- Why the tap is acceptable: the package has zero runtime deps and no install scripts; the tap (a Homebrew core maintainer's) ships a checksummed prebuilt bottle and pins the version, so upgrades are explicit rather than silent-latest. Upstream is a single maintainer either way.
-- Config uses truecolor (`colorLevel: 3`) — fine in Ghostty.
-- Git widgets have `hideNoGit` so they disappear outside repos.
-- To tweak interactively: run `ccstatusline` with no stdin for the TUI configurator.
+- To change segments, edit the script directly — or run `/statusline` inside Claude Code to regenerate it.
+- Fields are joined with `0x1F`, not tab: bash `read` collapses runs of whitespace IFS characters, so an empty field would shift every later field left.
+- The old `~/.claude/statusline.py` can be deleted.

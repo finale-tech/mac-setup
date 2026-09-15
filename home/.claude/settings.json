@@ -121,9 +121,8 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "ccstatusline",
-    "padding": 0,
-    "refreshInterval": 10
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
   },
   "outputStyle": "pedagogical",
   "effortLevel": "high",
