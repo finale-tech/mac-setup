@@ -1,7 +1,9 @@
-# Theme — auto-switches with macOS appearance
+# Ghostty config — reference copy: mac-setup/home/.config/ghostty/config
+# Reload anytime with Cmd+Shift+, (no restart needed)
 
-#theme = dark:Srcery,light:Builtin Solarized Light
-   
+# Theme — auto-switches with macOS appearance
+theme = dark:Jackie Brown, light:Coffee Theme
+
 # Shell integration (auto-detects zsh)
 shell-integration = detect
 
@@ -23,22 +25,24 @@ clipboard-paste-protection = true
 # URLs are clickable (Cmd+click)
 link-url = true
 
+# Bounce the dock icon / notify when a background tab rings the bell or a command finishes
 bell-features = attention
 desktop-notifications = true
 
+# Option acts as Alt (needed for Alt-C in fzf)
 macos-option-as-alt = true
 
+# --- Alternative themes (uncomment one to try) ---
+# Pairs (dark, light):
+#theme = dark:Builtin Solarized Dark, light:Builtin Solarized Light
+#theme = dark:Srcery, light:Builtin Solarized Light
 #theme = dark:IR Black, light:Builtin Solarized Light
 #theme = dark:Catppuccin Mocha, light:Novel
-
-#Dark themes
-#theme = Catppuccin Mocha 
+# Dark only:
+#theme = Catppuccin Mocha
 #theme = IR Black
-
-
-#Light themes
+# Light only:
 #theme = iTerm2 Tango Light
-#theme = Novel 
-#theme = Monokai Pro Light Sun 
-#theme = Novel 
+#theme = Novel
+#theme = Monokai Pro Light Sun
 #theme = Builtin Solarized Light
