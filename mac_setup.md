@@ -107,10 +107,21 @@ To try another theme, browse the built-in list with `ghostty +list-themes`, then
 
 ---
 
-## 5. Karabiner
+## 5. Keyboard layout
 
 > Needs: Homebrew (step 1), this repo (step 2)
 > Reference: [Keyboard layout](canary-extend-layout.svg) — Canary (matrix) on U.S. QWERTY, with Extend layer (Caps Lock): IJKL arrows, symbol grid, Space→Backspace, and Extend+⌘ physical-position rescues for Z/X/C/V
+
+Pick **one** of the two options. Both give the same layout. Running both at once remaps every key twice.
+
+| | 5A. Karabiner | 5B. Hammerspoon |
+|---|---|---|
+| Use on | Personal machines | Managed/work machines where Karabiner's driver is blocked |
+| How it works | Driver extension (virtual keyboard) | `hidutil` + an event tap (needs only Accessibility) |
+| Password fields | Canary works | **Types QWERTY** (see 5B notes) |
+| Source file | [karabiner-canary-final.json](karabiner-canary-final.json) (source of truth) | [home/.hammerspoon/init.lua](home/.hammerspoon/init.lua) (port of the JSON) |
+
+### 5A. Karabiner
 
 1. Install
 ```bash
@@ -137,6 +148,44 @@ Notes:
 - The file uses Karabiner's import format: a `title` plus a `rules` list (one rule, 61 manipulators). A file without a `rules` list shows up with nothing to enable, and the linter still says `ok`, so keep the wrapper.
 - Karabiner copies the rule into `~/.config/karabiner/karabiner.json` when you click Enable. Editing the repo file later doesn't change the live config. Re-import, or edit the live rule directly.
 - Device-specific settings (e.g., `ignore_vendor_events` for a Logitech keyboard) aren't in the repo. Set them in the **Devices** tab if needed.
+
+### 5B. Hammerspoon
+
+Hammerspoon can't hold Caps Lock as a layer key, so the config splits the job in two:
+1. `hidutil`, Apple's built-in tool, remaps Caps Lock to F18 in the keyboard driver. Nothing to install.
+2. An event tap in `init.lua` sees every key press, swallows the physical key, and posts the Canary key instead. While F18 (Caps Lock) is held, the Extend layer is checked first.
+
+The config applies the `hidutil` mapping itself every time it loads, so there is no LaunchAgent to install.
+
+1. Install
+```bash
+brew install --cask hammerspoon
+```
+
+2. Back up any existing config, then copy the reference ([home/.hammerspoon/init.lua](home/.hammerspoon/init.lua))
+```bash
+mkdir -p ~/.hammerspoon
+cp ~/.hammerspoon/init.lua ~/.hammerspoon/init.lua.bak 2>/dev/null
+cp home/.hammerspoon/init.lua ~/.hammerspoon/init.lua
+```
+
+3. Open Hammerspoon and grant **Accessibility** when prompted (System Settings → Privacy & Security → Accessibility). If it also asks for **Input Monitoring**, allow that too. In Hammerspoon's **Preferences**, tick **Launch Hammerspoon at login**.
+
+4. Reload: menu bar icon → **Reload Config**. Expect a "Canary layout loaded" alert. If it doesn't appear, open menu bar icon → **Console** to see the error.
+
+5. Check
+```bash
+hidutil property --get UserKeyMapping   # expect Src 0x700000039 → Dst 0x70000006D
+```
+   Then type on the physical `A S D F` keys (expect `crst`), and hold Caps Lock + `J` (expect the cursor to move left).
+
+Notes:
+- **The JSON stays the source of truth.** To change the layout, edit `karabiner-canary-final.json` first, then mirror the change in the `BASE` / `EXTEND` / `RESCUE` tables in `init.lua`. Key names in the Lua match Karabiner's `key_code` names, so you can compare them line by line.
+- **Password fields type QWERTY.** When a password field or a terminal password prompt (e.g., `sudo`) has focus, macOS turns on *Secure Input*, which hides keystrokes from all event taps. Hammerspoon never sees those keys, so you get plain QWERTY there. Type passwords by QWERTY position. Karabiner doesn't have this problem because it remaps inside the driver.
+- Tapping Caps Lock alone (under 1 second, no other key pressed) still toggles Caps Lock, as `to_if_alone` does in Karabiner.
+- One small difference: the Extend+⌘ rescues accept either ⌘ key. Karabiner's rule only matches left ⌘.
+- If **System Settings → Keyboard → Keyboard Shortcuts → Modifier Keys** remaps Caps Lock, set it back to Caps Lock. Otherwise the `hidutil` mapping never sees it.
+- Undo everything: quit Hammerspoon, then run `hidutil property --set '{"UserKeyMapping":[]}'`. The mapping also clears on reboot if Hammerspoon doesn't start.
 
 ---
 
