@@ -71,7 +71,7 @@ Then, to remove it completely, delete this project folder (which also removes th
 `node_modules`):
 
 ```bash
-rm -rf /Users/work/Documents/gits/mac-setup/arnaud-claude-plugins/html2md
+rm -rf /Users/work/Documents/gits/mac-setup/html2md
 ```
 
 Verify it's gone — this should print nothing:
