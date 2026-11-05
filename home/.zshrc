@@ -19,6 +19,11 @@ setopt HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS SHARE_HISTORY
 setopt HIST_IGNORE_SPACE HIST_REDUCE_BLANKS EXTENDED_HISTORY
 
 # --- Claude Code ---
+# opus/sonnet resolve via ANTHROPIC_DEFAULT_{OPUS,SONNET}_MODEL when set.
+alias ca='claude agents'                                        # background agents view
+alias cop='claude --model opusplan'                             # Opus to plan, Sonnet to execute
+alias co='claude --model opus --effort medium --permission-mode auto'
+alias cs='claude --model sonnet --effort high --permission-mode auto'
 [ -f ~/.claude/claude.local.zsh ] && source ~/.claude/claude.local.zsh   # machine-only overrides
 
 # --- Prompt: current dir in cyan ---
