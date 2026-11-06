@@ -1,0 +1,124 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
+<keyboard group="126" id="-27002" name="canary" maxout="1">
+  <layouts>
+    <layout first="0" last="17" modifiers="commonModifiers" mapSet="ANSI"/>
+  </layouts>
+
+  <modifierMap id="commonModifiers" defaultIndex="0">
+    <!-- Cmd (with any other modifiers) uses the same Canary letters as the base layer -->
+    <keyMapSelect mapIndex="0">
+      <modifier keys="command anyShift? caps? anyOption? anyControl?"/>
+      <modifier keys=""/>
+    </keyMapSelect>
+    <!-- caps? = works the same whether Caps Lock is on or off (tap Caps alone toggles it) -->
+    <keyMapSelect mapIndex="1"><modifier keys="anyShift caps?"/></keyMapSelect>
+    <keyMapSelect mapIndex="2"><modifier keys="caps"/></keyMapSelect>
+    <keyMapSelect mapIndex="3"><modifier keys="anyControl caps?"/></keyMapSelect>
+    <keyMapSelect mapIndex="4"><modifier keys="anyOption caps?"/></keyMapSelect>
+    <keyMapSelect mapIndex="5"><modifier keys="anyOption anyShift caps?"/></keyMapSelect>
+  </modifierMap>
+
+  <keyMapSet id="ANSI">
+
+    <!-- 0: base (lowercase), also used for Cmd and Option -->
+    <keyMap index="0">
+      <key code="12" output="w"/><key code="13" output="l"/><key code="14" output="y"/><key code="15" output="p"/><key code="17" output="k"/>
+      <key code="16" output="z"/><key code="32" output="x"/><key code="34" output="o"/><key code="31" output="u"/><key code="35" output=";"/>
+      <key code="0" output="c"/><key code="1" output="r"/><key code="2" output="s"/><key code="3" output="t"/><key code="5" output="b"/>
+      <key code="4" output="f"/><key code="38" output="n"/><key code="40" output="e"/><key code="37" output="i"/><key code="41" output="a"/>
+      <key code="6" output="j"/><key code="7" output="v"/><key code="8" output="d"/><key code="9" output="g"/><key code="11" output="q"/>
+      <key code="45" output="m"/><key code="46" output="h"/><key code="43" output="/"/><key code="47" output=","/><key code="44" output="."/>
+      <key code="18" output="1"/><key code="19" output="2"/><key code="20" output="3"/><key code="21" output="4"/><key code="23" output="5"/>
+      <key code="22" output="6"/><key code="26" output="7"/><key code="28" output="8"/><key code="25" output="9"/><key code="29" output="0"/>
+      <key code="27" output="-"/><key code="24" output="="/><key code="33" output="["/><key code="30" output="]"/><key code="42" output="\"/>
+      <key code="39" output="&#x0027;"/><key code="50" output="`"/>
+      <key code="36" output="&#x000D;"/><key code="48" output="&#x0009;"/><key code="49" output="&#x0020;"/><key code="51" output="&#x0008;"/><key code="53" output="&#x001B;"/>
+      <key code="117" output="&#x007F;"/><key code="123" output="&#x001C;"/><key code="124" output="&#x001D;"/><key code="125" output="&#x001F;"/><key code="126" output="&#x001E;"/>
+      <key code="115" output="&#x0001;"/><key code="119" output="&#x0004;"/><key code="116" output="&#x000B;"/><key code="121" output="&#x000C;"/>
+    </keyMap>
+
+    <!-- 1: shift -->
+    <keyMap index="1">
+      <key code="12" output="W"/><key code="13" output="L"/><key code="14" output="Y"/><key code="15" output="P"/><key code="17" output="K"/>
+      <key code="16" output="Z"/><key code="32" output="X"/><key code="34" output="O"/><key code="31" output="U"/><key code="35" output=":"/>
+      <key code="0" output="C"/><key code="1" output="R"/><key code="2" output="S"/><key code="3" output="T"/><key code="5" output="B"/>
+      <key code="4" output="F"/><key code="38" output="N"/><key code="40" output="E"/><key code="37" output="I"/><key code="41" output="A"/>
+      <key code="6" output="J"/><key code="7" output="V"/><key code="8" output="D"/><key code="9" output="G"/><key code="11" output="Q"/>
+      <key code="45" output="M"/><key code="46" output="H"/><key code="43" output="?"/><key code="47" output="&#x003C;"/><key code="44" output="&#x003E;"/>
+      <key code="18" output="!"/><key code="19" output="@"/><key code="20" output="#"/><key code="21" output="$"/><key code="23" output="%"/>
+      <key code="22" output="^"/><key code="26" output="&#x0026;"/><key code="28" output="*"/><key code="25" output="("/><key code="29" output=")"/>
+      <key code="27" output="_"/><key code="24" output="+"/><key code="33" output="{"/><key code="30" output="}"/><key code="42" output="|"/>
+      <key code="39" output="&#x0022;"/><key code="50" output="~"/>
+      <key code="36" output="&#x000D;"/><key code="48" output="&#x0009;"/><key code="49" output="&#x0020;"/><key code="51" output="&#x0008;"/><key code="53" output="&#x001B;"/>
+      <key code="117" output="&#x007F;"/><key code="123" output="&#x001C;"/><key code="124" output="&#x001D;"/><key code="125" output="&#x001F;"/><key code="126" output="&#x001E;"/>
+      <key code="115" output="&#x0001;"/><key code="119" output="&#x0004;"/><key code="116" output="&#x000B;"/><key code="121" output="&#x000C;"/>
+    </keyMap>
+
+    <!-- 2: caps lock (letters uppercase, symbols unchanged) -->
+    <keyMap index="2">
+      <key code="12" output="W"/><key code="13" output="L"/><key code="14" output="Y"/><key code="15" output="P"/><key code="17" output="K"/>
+      <key code="16" output="Z"/><key code="32" output="X"/><key code="34" output="O"/><key code="31" output="U"/><key code="35" output=";"/>
+      <key code="0" output="C"/><key code="1" output="R"/><key code="2" output="S"/><key code="3" output="T"/><key code="5" output="B"/>
+      <key code="4" output="F"/><key code="38" output="N"/><key code="40" output="E"/><key code="37" output="I"/><key code="41" output="A"/>
+      <key code="6" output="J"/><key code="7" output="V"/><key code="8" output="D"/><key code="9" output="G"/><key code="11" output="Q"/>
+      <key code="45" output="M"/><key code="46" output="H"/><key code="43" output="/"/><key code="47" output=","/><key code="44" output="."/>
+      <key code="18" output="1"/><key code="19" output="2"/><key code="20" output="3"/><key code="21" output="4"/><key code="23" output="5"/>
+      <key code="22" output="6"/><key code="26" output="7"/><key code="28" output="8"/><key code="25" output="9"/><key code="29" output="0"/>
+      <key code="27" output="-"/><key code="24" output="="/><key code="33" output="["/><key code="30" output="]"/><key code="42" output="\"/>
+      <key code="39" output="&#x0027;"/><key code="50" output="`"/>
+      <key code="36" output="&#x000D;"/><key code="48" output="&#x0009;"/><key code="49" output="&#x0020;"/><key code="51" output="&#x0008;"/><key code="53" output="&#x001B;"/>
+      <key code="117" output="&#x007F;"/><key code="123" output="&#x001C;"/><key code="124" output="&#x001D;"/><key code="125" output="&#x001F;"/><key code="126" output="&#x001E;"/>
+      <key code="115" output="&#x0001;"/><key code="119" output="&#x0004;"/><key code="116" output="&#x000B;"/><key code="121" output="&#x000C;"/>
+    </keyMap>
+
+    <!-- 3: control (Canary letters send the matching control characters) -->
+    <keyMap index="3">
+      <key code="12" output="&#x0017;"/><key code="13" output="&#x000C;"/><key code="14" output="&#x0019;"/><key code="15" output="&#x0010;"/><key code="17" output="&#x000B;"/>
+      <key code="16" output="&#x001A;"/><key code="32" output="&#x0018;"/><key code="34" output="&#x000F;"/><key code="31" output="&#x0015;"/>
+      <key code="0" output="&#x0003;"/><key code="1" output="&#x0012;"/><key code="2" output="&#x0013;"/><key code="3" output="&#x0014;"/><key code="5" output="&#x0002;"/>
+      <key code="4" output="&#x0006;"/><key code="38" output="&#x000E;"/><key code="40" output="&#x0005;"/><key code="37" output="&#x0009;"/><key code="41" output="&#x0001;"/>
+      <key code="6" output="&#x000A;"/><key code="7" output="&#x0016;"/><key code="8" output="&#x0004;"/><key code="9" output="&#x0007;"/><key code="11" output="&#x0011;"/>
+      <key code="45" output="&#x000D;"/><key code="46" output="&#x0008;"/>
+      <key code="33" output="&#x001B;"/><key code="30" output="&#x001D;"/><key code="42" output="&#x001C;"/>
+      <key code="36" output="&#x000D;"/><key code="48" output="&#x0009;"/><key code="49" output="&#x0020;"/><key code="51" output="&#x0008;"/><key code="53" output="&#x001B;"/>
+      <key code="117" output="&#x007F;"/><key code="123" output="&#x001C;"/><key code="124" output="&#x001D;"/><key code="125" output="&#x001F;"/><key code="126" output="&#x001E;"/>
+      <key code="115" output="&#x0001;"/><key code="119" output="&#x0004;"/><key code="116" output="&#x000B;"/><key code="121" output="&#x000C;"/>
+    </keyMap>
+
+    <!-- 4: Option = Extend symbol grid (canary_extend adds the Option flag while Caps is held) -->
+    <keyMap index="4">
+      <key code="12" output="!"/><key code="13" output="{"/><key code="14" output="}"/><key code="15" output="&#x0026;"/><key code="17" output="k"/>
+      <key code="16" output="z"/><key code="32" output="x"/><key code="34" output="o"/><key code="31" output="u"/><key code="35" output="="/>
+      <key code="0" output="_"/><key code="1" output="("/><key code="2" output=")"/><key code="3" output="="/><key code="5" output="b"/>
+      <key code="4" output="f"/><key code="38" output="n"/><key code="40" output="e"/><key code="37" output="i"/><key code="41" output="a"/>
+      <key code="6" output="*"/><key code="7" output="["/><key code="8" output="]"/><key code="9" output="|"/><key code="11" output="q"/>
+      <key code="45" output="m"/><key code="46" output="."/><key code="43" output="/"/><key code="47" output=","/><key code="44" output="."/>
+      <key code="18" output="1"/><key code="19" output="2"/><key code="20" output="3"/><key code="21" output="4"/><key code="23" output="5"/>
+      <key code="22" output="6"/><key code="26" output="7"/><key code="28" output="8"/><key code="25" output="9"/><key code="29" output="0"/>
+      <key code="27" output="-"/><key code="24" output="="/><key code="33" output="["/><key code="30" output="]"/><key code="42" output="\"/>
+      <key code="39" output="&#x0027;"/><key code="50" output="`"/>
+      <key code="36" output="&#x000D;"/><key code="48" output="&#x0009;"/><key code="49" output="&#x0020;"/><key code="51" output="&#x0008;"/><key code="53" output="&#x001B;"/>
+      <key code="117" output="&#x007F;"/><key code="123" output="&#x001C;"/><key code="124" output="&#x001D;"/><key code="125" output="&#x001F;"/><key code="126" output="&#x001E;"/>
+      <key code="115" output="&#x0001;"/><key code="119" output="&#x0004;"/><key code="116" output="&#x000B;"/><key code="121" output="&#x000C;"/>
+    </keyMap>
+
+    <!-- 5: Option+Shift = Extend symbols, same as without Shift -->
+    <keyMap index="5">
+      <key code="12" output="!"/><key code="13" output="{"/><key code="14" output="}"/><key code="15" output="&#x0026;"/><key code="17" output="K"/>
+      <key code="16" output="Z"/><key code="32" output="X"/><key code="34" output="O"/><key code="31" output="U"/><key code="35" output="="/>
+      <key code="0" output="_"/><key code="1" output="("/><key code="2" output=")"/><key code="3" output="="/><key code="5" output="B"/>
+      <key code="4" output="F"/><key code="38" output="N"/><key code="40" output="E"/><key code="37" output="I"/><key code="41" output="A"/>
+      <key code="6" output="*"/><key code="7" output="["/><key code="8" output="]"/><key code="9" output="|"/><key code="11" output="Q"/>
+      <key code="45" output="M"/><key code="46" output="."/><key code="43" output="?"/><key code="47" output="&#x003C;"/><key code="44" output="&#x003E;"/>
+      <key code="18" output="!"/><key code="19" output="@"/><key code="20" output="#"/><key code="21" output="$"/><key code="23" output="%"/>
+      <key code="22" output="^"/><key code="26" output="&#x0026;"/><key code="28" output="*"/><key code="25" output="("/><key code="29" output=")"/>
+      <key code="27" output="_"/><key code="24" output="+"/><key code="33" output="{"/><key code="30" output="}"/><key code="42" output="|"/>
+      <key code="39" output="&#x0022;"/><key code="50" output="~"/>
+      <key code="36" output="&#x000D;"/><key code="48" output="&#x0009;"/><key code="49" output="&#x0020;"/><key code="51" output="&#x0008;"/><key code="53" output="&#x001B;"/>
+      <key code="117" output="&#x007F;"/><key code="123" output="&#x001C;"/><key code="124" output="&#x001D;"/><key code="125" output="&#x001F;"/><key code="126" output="&#x001E;"/>
+      <key code="115" output="&#x0001;"/><key code="119" output="&#x0004;"/><key code="116" output="&#x000B;"/><key code="121" output="&#x000C;"/>
+    </keyMap>
+
+  </keyMapSet>
+</keyboard>
